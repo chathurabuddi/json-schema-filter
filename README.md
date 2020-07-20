@@ -1,5 +1,6 @@
 ## JSON Schema Filter
-This libray filter (remove) nodes recursively from JSON objects based on passed JSON-SCHEMA.    
+This libray filter (remove) nodes recursively from JSON objects based on passed JSON-SCHEMA.  
+_For Javascript version, please refer [alank64/json-schema-filter](https://github.com/alank64/json-schema-filter)_
 
 ### Installation & Usage  
 You can find the latest downloads on the [release page](https://github.com/chathurabuddi/json-schema-filter/releases) for running on the classpath. Alternatively you can use the maven central repository.
@@ -9,7 +10,6 @@ You can find the latest downloads on the [release page](https://github.com/chath
         <artifactId>json-schema-filter</artifactId>
         <version>1.0</version>
     </dependency>
-
 
 ### Build from source  
 Clone the repository and run `mvn clean install` from the project root. After that, jar file will be generated at `<PROJECT_ROOT>/target` directory
