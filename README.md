@@ -1,4 +1,8 @@
 ## JSON Schema Filter
+
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/chathurabuddi/json-schema-filter/blob/master/LICENSE)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=chathurabuddi_json-schema-filter&metric=alert_status)](https://sonarcloud.io/dashboard?id=chathurabuddi_json-schema-filter)
+
 This libray filter (remove) nodes recursively from JSON objects based on passed JSON-SCHEMA.  
 _For Javascript version, please refer [alank64/json-schema-filter](https://github.com/alank64/json-schema-filter)_
 
