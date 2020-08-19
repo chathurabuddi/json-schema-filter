@@ -2,6 +2,8 @@
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/chathurabuddi/json-schema-filter/blob/master/LICENSE)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=chathurabuddi_json-schema-filter&metric=alert_status)](https://sonarcloud.io/dashboard?id=chathurabuddi_json-schema-filter)
+[![Latest Version](https://img.shields.io/github/v/release/chathurabuddi/json-schema-filter)](https://github.com/chathurabuddi/json-schema-filter/releases/latest)
+[![Maven Central](https://img.shields.io/maven-central/v/lk.chathurabuddi/json-schema-filter.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22lk.chathurabuddi%22%20AND%20a:%22json-schema-filter%22)
 
 This libray filter (remove) nodes recursively from JSON objects based on passed JSON-SCHEMA.  
 _For Javascript version, please refer [alank64/json-schema-filter](https://github.com/alank64/json-schema-filter)_
