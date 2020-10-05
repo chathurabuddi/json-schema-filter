@@ -61,6 +61,10 @@ public class JsonSchemaFilter {
     @SuppressWarnings("unchecked")
     private JSONObject filter(JSONObject schema, JSONObject sourceJson) {
         JSONObject resultJson = new JSONObject();
+        // check for property-less object (free-form)
+        if (!schema.containsKey(SchemaKeyWord.PROPERTIES.value()) && !sourceJson.keySet().isEmpty()) {
+            return sourceJson;
+        }
         JSONObject schemaProperties = (JSONObject) schema.get(SchemaKeyWord.PROPERTIES.value());
         schemaProperties.keySet().forEach(key -> {
             Object sourceProperty = sourceJson.get(key);
@@ -72,12 +76,7 @@ public class JsonSchemaFilter {
                 JSONObject schemaProperty = (JSONObject) schemaProperties.get(key);
                 String schemaPropertyType = (String) schemaProperty.get(SchemaKeyWord.TYPE.value());
                 if (SchemaKeyWord.OBJECT.value().equals(schemaPropertyType)) {
-                    // check for property-less object (free-form)
-                    if (schemaProperty.containsKey(SchemaKeyWord.PROPERTIES.value())) {
-                        resultJson.put(key, filter(schemaProperty, (JSONObject) sourceProperty));
-                    } else if (!((JSONObject)sourceProperty).keySet().isEmpty()){
-                        resultJson.put(key, sourceProperty);
-                    }
+                    resultJson.put(key, filter(schemaProperty, (JSONObject) sourceProperty));
                 } else if (SchemaKeyWord.ARRAY.value().equals(schemaPropertyType)) {
                     resultJson.put(key, filter(schemaProperty, (JSONArray) sourceProperty));
                 } else {
