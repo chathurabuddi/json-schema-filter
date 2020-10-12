@@ -99,7 +99,7 @@ public class JsonSchemaFilter {
             for (Object item : sourceJson) {
                 resultJson.add(filter(arrayItems, (JSONArray) item));
             }
-        } else {
+        } else if (arrayItems.get(SchemaKeyWord.TYPE.value()) != null){
             resultJson.addAll(sourceJson);
         }
         return resultJson;
