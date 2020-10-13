@@ -1,0 +1,31 @@
+﻿Test Name;Schema;Source Json
+Invalid schema;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""color"": {
+      ""type""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": ""Red""
+}"
+Invalid source JSON;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""color"": {
+      ""type"": ""string""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": 
+    ""color"": ""Red""
+}"
