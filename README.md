@@ -1,7 +1,10 @@
 ## JSON Schema Filter
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/chathurabuddi/json-schema-filter/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/chathurabuddi/json-schema-filter.svg?style=shield)](https://circleci.com/gh/chathurabuddi/json-schema-filter)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=chathurabuddi_json-schema-filter&metric=alert_status)](https://sonarcloud.io/dashboard?id=chathurabuddi_json-schema-filter)
+[![codebeat badge](https://codebeat.co/badges/034dea9c-65fa-479a-98b9-5ea968236dd3)](https://codebeat.co/projects/github-com-chathurabuddi-json-schema-filter-master)
+[![codecov](https://codecov.io/gh/chathurabuddi/json-schema-filter/branch/master/graph/badge.svg)](https://codecov.io/gh/chathurabuddi/json-schema-filter)
 [![Latest Version](https://img.shields.io/github/v/release/chathurabuddi/json-schema-filter)](https://github.com/chathurabuddi/json-schema-filter/releases/latest)
 [![Maven Central](https://img.shields.io/maven-central/v/lk.chathurabuddi/json-schema-filter.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22lk.chathurabuddi%22%20AND%20a:%22json-schema-filter%22)
 
@@ -14,7 +17,7 @@ You can find the latest downloads on the [release page](https://github.com/chath
     <dependency>
         <groupId>lk.chathurabuddi</groupId>
         <artifactId>json-schema-filter</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
     </dependency>
 
 ### Build from source  
