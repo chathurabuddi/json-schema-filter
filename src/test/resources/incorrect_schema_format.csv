@@ -1,0 +1,30 @@
+﻿Test Name;Schema;Source Json
+No type attributes defined in schema;"{
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""color"": {
+      ""type"": ""string""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": ""Red""
+}"
+Invalid attributes defined in schema;"{
+  ""type"": ""invalid"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""color"": {
+      ""type"": ""string""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": ""Red""
+}"

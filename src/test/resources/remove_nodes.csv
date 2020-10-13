@@ -1,0 +1,319 @@
+﻿Test Name;Schema;Source Json;Expected Json
+Remove a root level node from source JSON;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""color"": {
+      ""type"": ""string""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": ""Red""
+}";"{
+    ""fruit"": ""Apple"",
+    ""color"": ""Red""
+}"
+Remove more than one root level node from source JSON;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""color"": {
+      ""type"": ""string""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": ""Red""
+}";"{
+    ""color"": ""Red""
+}"
+Remove all root level nodes from source JSON;"{
+  ""type"": ""object"",
+  ""properties"": {  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": ""Red""
+}";{}
+Remove an inner level node from source JSON;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""size"": {
+      ""type"": ""string""
+    },
+    ""colors"": {
+      ""type"": ""object"",
+      ""properties"": {
+        ""outside"": {
+          ""type"": ""string""
+        }
+      }
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {
+      ""inside"" : ""White"",
+      ""outside"" : ""Red""
+    }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {
+      ""outside"" : ""Red""
+    }
+}"
+Remove more than one inner level node from source JSON;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""size"": {
+      ""type"": ""string""
+    },
+    ""colors"": {
+      ""type"": ""object"",
+      ""properties"": {
+        ""outside"": {
+          ""type"": ""string""
+        }
+      }
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {
+      ""inside"" : ""White"",
+      ""outside"" : ""Red"",
+      ""average"" : ""Light Red""
+    }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {
+      ""outside"" : ""Red""
+    }
+}"
+Remove all inner nodes in the parent node;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""size"": {
+      ""type"": ""string""
+    },
+    ""colors"": {
+      ""type"": ""object"",
+      ""properties"": {}
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {
+      ""inside"" : ""White"",
+      ""outside"" : ""Red"",
+      ""average"" : ""Light Red""
+    }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {  }
+}"
+Remove a node inside an array;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruits"": {
+      ""type"": ""array"",
+      ""items"": {
+          ""type"": ""object"",
+          ""properties"": {
+            ""name"": {
+              ""type"": ""string""
+            },
+            ""size"": {
+              ""type"": ""string""
+             }
+           }
+        }
+    }
+  }
+}";"{
+  ""fruits"" : [
+      {
+          ""name"": ""Apple"",
+          ""size"": ""Large"",
+          ""colors"": {
+            ""inside"" : ""White"",
+            ""outside"" : ""Red""
+          }
+      },{
+          ""name"": ""Orange"",
+          ""size"": ""Medium"",
+          ""colors"": {
+            ""inside"" : ""Yellow"",
+            ""outside"" : ""Orange""
+          }
+      }
+   ]
+}";"{
+  ""fruits"" : [
+      {
+          ""name"": ""Apple"",
+          ""size"": ""Large""
+      },{
+          ""name"": ""Orange"",
+          ""size"": ""Medium""
+      }
+   ]
+}"
+Remove an array node;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""vegitables"": {
+      ""type"": ""array"",
+      ""items"": {
+        ""type"": ""array"",
+        ""items"": {
+          ""type"": ""string""
+        }
+      }
+    },
+    ""meta"": {
+      ""type"": ""string""
+    }   
+  }
+}";"{
+  ""fruits"" : [
+    {
+      ""name"": ""Apple"",
+      ""size"": ""Large"",
+      ""colors"": {
+        ""inside"" : ""White"",
+        ""outside"" : ""Red""
+      }
+    },{
+      ""name"": ""Orange"",
+      ""size"": ""Medium"",
+      ""colors"": {
+        ""inside"" : ""Yellow"",
+        ""outside"" : ""Orange""
+      }
+    }
+  ],
+  ""vegitables"" : [
+    [
+      ""carrot""
+    ],[
+      ""leeks""
+    ]
+  ],
+  ""meta"" : ""data collected from market""
+}";"{
+  ""vegitables"" : [
+    [
+      ""carrot""
+    ],[
+      ""leeks""
+    ]
+  ],
+  ""meta"" : ""data collected from market""
+}"
+Remove an array node inside another array;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruits"": {
+      ""type"": ""array"",
+      ""items"": {
+        ""type"": ""string""
+      }
+    },
+    ""vegitables"": {
+      ""type"": ""array"",
+      ""items"": { }
+      }
+  }
+}";"{
+  ""fruits"" : [
+      ""Apple"", ""Orange""
+   ],
+  ""vegitables"" : [
+    [
+      ""carrot""
+    ],[
+      ""leeks""
+    ]
+  ]
+}";"{
+  ""fruits"" : [
+      ""Apple"", ""Orange""
+   ],
+  ""vegitables"" : [  ]
+}"
+Remove a node from a JSON with a NULL property;"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""color"": {
+      ""type"": ""string""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": null
+}";"{
+    ""fruit"": ""Apple"",
+    ""color"": null
+}"
+Remove a node from a JSON with a root level array;"{
+  ""type"": ""array"",
+  ""items"": {
+    ""type"": ""object"",
+    ""properties"": {
+      ""name"": {
+        ""type"": ""string""
+      },
+      ""size"": {
+        ""type"": ""string""
+      }
+    }
+  }
+}";"[
+  {
+    ""name"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {
+      ""inside"" : ""White"",
+      ""outside"" : ""Red""
+    }
+  },{
+    ""name"": ""Orange"",
+    ""size"": ""Medium"",
+    ""colors"": {
+      ""inside"" : ""Yellow"",
+      ""outside"" : ""Orange""
+    }
+  }
+]";"[
+  {
+    ""name"": ""Apple"",
+    ""size"": ""Large""
+  },{
+    ""name"": ""Orange"",
+    ""size"": ""Medium""
+  }
+]"
