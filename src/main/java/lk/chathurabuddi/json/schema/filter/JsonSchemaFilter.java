@@ -46,9 +46,9 @@ public class JsonSchemaFilter {
         JSONParser parser = new JSONParser();
         try {
             JSONObject schema = (JSONObject) parser.parse(schemaStr);
-            if (SchemaKeyWord.OBJECT.value().equals(schema.get("type"))) {
+            if (SchemaKeyWord.OBJECT.value().equals(schema.get(SchemaKeyWord.TYPE.value()))) {
                 return filter(schema, (JSONObject) parser.parse(sourceJsonStr)).toJSONString();
-            } else if (SchemaKeyWord.ARRAY.value().equals(schema.get("type"))) {
+            } else if (SchemaKeyWord.ARRAY.value().equals(schema.get(SchemaKeyWord.TYPE.value()))) {
                 return filter(schema, (JSONArray) parser.parse(sourceJsonStr)).toJSONString();
             } else {
                 throw new InvalidSchemaException();
