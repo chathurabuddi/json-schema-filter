@@ -24,6 +24,7 @@ package lk.chathurabuddi.json.schema.filter;
  * SOFTWARE.
  */
 
+import lk.chathurabuddi.json.schema.constants.FreeFormAction;
 import lk.chathurabuddi.json.schema.constants.SchemaKeyWord;
 import lk.chathurabuddi.json.schema.exceptions.InvalidSchemaException;
 import lk.chathurabuddi.json.schema.exceptions.JsonParseException;
@@ -36,10 +37,16 @@ public class JsonSchemaFilter {
 
     private final String schemaStr;
     private final String sourceJsonStr;
+    private final FreeFormAction freeFormAction;
 
     public JsonSchemaFilter(String schema, String sourceJson) {
-        this.schemaStr = schema;
-        this.sourceJsonStr = sourceJson;
+        this (schema, sourceJson, FreeFormAction.ATTACH);
+    }
+
+    public JsonSchemaFilter(String schemaStr, String sourceJsonStr, FreeFormAction freeFormAction) {
+        this.schemaStr = schemaStr;
+        this.sourceJsonStr = sourceJsonStr;
+        this.freeFormAction = freeFormAction;
     }
 
     public String filter() throws InvalidSchemaException, JsonParseException {
@@ -63,7 +70,7 @@ public class JsonSchemaFilter {
         JSONObject resultJson = new JSONObject();
         // check for property-less object (free-form)
         if (!schema.containsKey(SchemaKeyWord.PROPERTIES.value()) && !sourceJson.keySet().isEmpty()) {
-            return sourceJson;
+            return (freeFormAction == FreeFormAction.DETACH) ? resultJson : sourceJson;
         }
         JSONObject schemaProperties = (JSONObject) schema.get(SchemaKeyWord.PROPERTIES.value());
         schemaProperties.keySet().forEach(key -> {
