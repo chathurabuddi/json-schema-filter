@@ -1,0 +1,33 @@
+﻿Test Name;Schema;Source Json;Expected Json
+Schema with property-less root object (free form) ;"{
+  ""type"": ""object"",
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""color"": ""Red""
+}";{ }
+Schema with property-less object (free form);"{
+  ""type"": ""object"",
+  ""properties"": {
+    ""fruit"": {
+      ""type"": ""string""
+    },
+    ""size"": {
+      ""type"": ""string""
+    },
+    ""colors"": {
+      ""type"": ""object""
+    }
+  }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": {
+      ""inside"" : ""White"",
+      ""outside"" : ""Red""
+    }
+}";"{
+    ""fruit"": ""Apple"",
+    ""size"": ""Large"",
+    ""colors"": { }
+}"

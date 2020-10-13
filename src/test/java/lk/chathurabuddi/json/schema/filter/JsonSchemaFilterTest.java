@@ -1,5 +1,6 @@
 package lk.chathurabuddi.json.schema.filter;
 
+import lk.chathurabuddi.json.schema.constants.FreeFormAction;
 import lk.chathurabuddi.json.schema.exceptions.InvalidSchemaException;
 import lk.chathurabuddi.json.schema.exceptions.JsonParseException;
 import org.junit.jupiter.api.Assertions;
@@ -44,10 +45,26 @@ class JsonSchemaFilterTest {
     }
 
     @ParameterizedTest(name = "{0}")
-    @CsvFileSource(resources = "/property_less_objects.csv", delimiter = ';', numLinesToSkip = 1)
-    @DisplayName("Retain property less objects (free-form) as it is")
-    void test_propertyLessObjects(String testName, String schema, String json, String expected) throws Exception {
+    @CsvFileSource(resources = "/attach_free_form_objects.csv", delimiter = ';', numLinesToSkip = 1)
+    @DisplayName("Attach property less objects (free-form) if no free-form-action defined")
+    void test_freeFormObjects_whenNoActionDefined(String testName, String schema, String json, String expected) throws Exception {
         JsonSchemaFilter jsonSchemaFilter = new JsonSchemaFilter(schema, json);
+        JSONAssert.assertEquals(expected, jsonSchemaFilter.filter(), JSONCompareMode.STRICT);
+    }
+
+    @ParameterizedTest(name = "{0}")
+    @CsvFileSource(resources = "/attach_free_form_objects.csv", delimiter = ';', numLinesToSkip = 1)
+    @DisplayName("Attach property less objects (free-form) if free-form-action is ATTACH")
+    void test_freeFormObjects_whenActionIsAttach(String testName, String schema, String json, String expected) throws Exception {
+        JsonSchemaFilter jsonSchemaFilter = new JsonSchemaFilter(schema, json, FreeFormAction.ATTACH);
+        JSONAssert.assertEquals(expected, jsonSchemaFilter.filter(), JSONCompareMode.STRICT);
+    }
+
+    @ParameterizedTest(name = "{0}")
+    @CsvFileSource(resources = "/detach_free_form_objects.csv", delimiter = ';', numLinesToSkip = 1)
+    @DisplayName("Attach property less objects (free-form) if free-form-action is DETACH")
+    void test_freeFormObjects_whenActionIsDetach(String testName, String schema, String json, String expected) throws Exception {
+        JsonSchemaFilter jsonSchemaFilter = new JsonSchemaFilter(schema, json, FreeFormAction.DETACH);
         JSONAssert.assertEquals(expected, jsonSchemaFilter.filter(), JSONCompareMode.STRICT);
     }
 
