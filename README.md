@@ -17,7 +17,7 @@ You can find the latest downloads on the [release page](https://github.com/chath
     <dependency>
         <groupId>lk.chathurabuddi</groupId>
         <artifactId>json-schema-filter</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
 
 ### Build from source  
@@ -43,5 +43,5 @@ if you want to contribute. Please make sure to read the
 before making a pull request.
 
 ### License
-Copyright © 2019 Chathura Buddhika ([chathurabuddi](www.chathurabuddi.lk))  
+Copyright © 2019 Chathura Buddhika ([chathurabuddi](http://chathurabuddi.lk))  
 This project is [MIT](http://opensource.org/licenses/MIT) licensed.
