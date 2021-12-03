@@ -81,7 +81,10 @@ public class JsonSchemaFilter {
                 }
             } else {
                 JSONObject schemaProperty = (JSONObject) schemaProperties.get(key);
-                String schemaPropertyType = (String) schemaProperty.get(SchemaKeyWord.TYPE.value());
+                Object typeValue = schemaProperty.get(SchemaKeyWord.TYPE.value());
+                String schemaPropertyType = typeValue.getClass().equals(JSONArray.class) ?
+                        (String)((JSONArray)typeValue).get(0) :
+                        (String) schemaProperty.get(SchemaKeyWord.TYPE.value());
                 if (SchemaKeyWord.OBJECT.value().equals(schemaPropertyType)) {
                     resultJson.put(key, filter(schemaProperty, (JSONObject) sourceProperty));
                 } else if (SchemaKeyWord.ARRAY.value().equals(schemaPropertyType)) {
