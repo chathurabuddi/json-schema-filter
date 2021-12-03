@@ -10,7 +10,7 @@ Schema with property-less object (free form);"{
   ""type"": ""object"",
   ""properties"": {
     ""fruit"": {
-      ""type"": ""string""
+      ""type"": [""string"", ""null""]
     },
     ""size"": {
       ""type"": ""string""
